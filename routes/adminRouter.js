@@ -11,7 +11,7 @@ const session = require("express-session");
 const adminAuth = require("../middleWares/adminAuth");
 
 const nocache = require("nocache");
-const { route } = require("./userrouter");
+const { route } = require("./userRouter");
 const multer = require("../util/multer");
 
 router.use(nocache());

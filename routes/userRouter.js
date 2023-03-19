@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 
 const userController = require("../controller/userController");
 
-const userAuth = require("../middlewares/userAuth");
+const userAuth = require("../middleWares/userAuth");
 
 const config = require("../config/config");
 
