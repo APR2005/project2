@@ -145,7 +145,7 @@ route.post('/forgetPassword', userController.forgetPassword)
 
 route.post('/verifyForgetOtp',userController.verifyForgetPassword)
 
-//route.get('*',(req,res)=>res.render('404'))
+
 
 
 
