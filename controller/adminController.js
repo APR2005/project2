@@ -566,8 +566,10 @@ const loadDashboard = async (req, res) => {
 
   const showCount = await orderModel.find().count()
   const productCount = await productModel.count()
+
   const usersCount = await userModel.count({is_admin:false})
   const totalCategory = await categoryModel.count({isAvailable:true})
+  console.log(productCount);
 
 console.log(categoryArray);
 console.log(orderCount);
@@ -611,6 +613,7 @@ const stockReport = async(req,res)=>{
 
 const salesReport = async(req,res)=>{
   try {
+    console.log("1");
       const productdata = await productModel.find()
       console.log(productdata);
       res.render('salesReport',{products:productdata})

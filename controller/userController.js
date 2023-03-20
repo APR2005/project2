@@ -607,8 +607,8 @@ const placeOrder = async (req, res) => {
       } else {
         console.log("2");
         var instance = new RazorPay({
-          key_id  :process.env.RAZOR_ID,
-          key_secret : process.env.RAZOR_secret,
+          key_id :process.env.RAZOR_ID,
+          key_secret:process.env.RAZOR_secret,
         });
         console.log("1");
         console.log(totalPrice);
@@ -688,8 +688,23 @@ const loadOrderSuccess = async (req, res) => {
                   }
                 }
               });
+
+              
           });
+          
       });
+    
+      const productDetails = await produtModel.find({ is_available: true});
+      for (let i = 0; i < productDetails.length; i++) {
+        for (let j = 0; j < order.products.item.length; j++) {
+          if (
+            productDetails[i]._id.equals(order.products.item[j].productId)
+          ) {
+            productDetails[i].sales += order.products.item[j].qty;
+          }
+        }
+        productDetails[i].save();
+      }
 
       res.render("orderSuccess", { session: req.session.user_id });
     }
